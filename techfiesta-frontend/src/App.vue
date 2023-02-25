@@ -1,38 +1,57 @@
 <template>
-  <header>
-    <h1>Pothole Detection Dashboard</h1>
-  </header>
-  <EasyDataTable :headers="headers" :items="items" alternating></EasyDataTable>
+  <TheHeader></TheHeader>
+  <v-parallax src="https://cdn.vuetifyjs.com/images/backgrounds/vbanner.jpg">
+    <v-card
+      class="d-flex align-center justify-center flex-wrap text-center mx-auto mt-15"
+      elevation="4"
+      rounded
+      max-width="600"
+      width="100%"
+      theme="light"
+    >
+      <component :is="component"></component>
+    </v-card>
+  </v-parallax>
 </template>
 
 <script setup lang="ts">
-import { onBeforeMount, ref, type Ref } from "vue";
-import type { Header, Item } from "vue3-easy-data-table";
-import properties from "./properties";
-import EasyDataTable from "vue3-easy-data-table";
+import { markRaw } from "vue";
+import TheHeader from "./components/TheHeader.vue";
+import ViewRecords from "./components/ViewRecords.vue";
 
-const headers: Header[] = [
-  { text: "ID", value: "id" },
-  { text: "Length", value: "x_len" },
-  { text: "Breadth", value: "y_len" },
-  { text: "Risk", value: "risk", sortable: true },
-  { text: "Confidence", value: "confidence", sortable: true },
-];
-
-const items: Ref<Item[] | undefined> = ref([
-  { id: 1, x_len: 1, y_len: 2, risk: "HIGH", confidence: 20 },
-]);
-
-onBeforeMount(() => {
-  anotherFunction();
-});
-
-async function anotherFunction() {
-  const response = await fetch(properties.url);
-  const resObject = await response.json();
-  items.value = resObject;
-  console.log(items.value);
-}
+const component = markRaw(ViewRecords);
 </script>
 
-<style scoped></style>
+<style scoped>
+.filter-column {
+  display: flex;
+  align-items: center;
+  justify-items: center;
+  position: relative;
+}
+.filter-icon {
+  cursor: pointer;
+  display: inline-block;
+  width: 15px !important;
+  height: 15px !important;
+  margin-right: 4px;
+}
+.filter-menu {
+  padding: 15px 30px;
+  z-index: 1;
+  position: absolute;
+  top: 30px;
+  width: 200px;
+  background-color: #fff;
+  border: 1px solid #e0e0e0;
+}
+.filter-confidence-menu {
+  height: 40px;
+}
+.slider {
+  margin-top: 36px;
+}
+.favoriteRisk-selector {
+  width: 100%;
+}
+</style>

@@ -11,8 +11,13 @@
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore"
   },
   "dependencies": {
+    "remove": "^0.1.5",
+    "uninstall": "^0.0.0",
     "vue": "^3.2.45",
-    "vue3-easy-data-table": "^1.5.34"
+    "vue-router": "^4.1.6",
+    "vue3-easy-data-table": "^1.5.34",
+    "vue3-loading-screen": "^1.0.3",
+    "vuetify": "^3.1.6"
   },
   "devDependencies": {
     "@rushstack/eslint-patch": "^1.1.4",
