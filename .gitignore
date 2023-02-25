@@ -159,3 +159,8 @@ coverage
 
 # Pyre type checker
 .pyre/
+
+# pothole measurements
+
+pothole_coordinates
+pothole_size
