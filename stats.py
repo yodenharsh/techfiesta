@@ -31,7 +31,7 @@ for x in potholes:
 print(area_list)
 
 sns.set_style("whitegrid")
-sns.kdeplot(np.array(area_list), bw_method=0.5, fill=True, clip=(-500, 5000))
+sns.kdeplot(np.array(area_list), bw_method=0.5, fill=True)
 
 plt.xlabel("Area (in cm^2)")
 plt.show()
